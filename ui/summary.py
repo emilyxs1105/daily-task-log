@@ -3,7 +3,7 @@ from tkinter import ttk
 from datetime import date, datetime, timedelta
 from collections import defaultdict
 from core import data as db
-from ui.glass import GlassCard
+from ui.glass import GlassCard, PillButton
 
 STATUSES = [
     "Researching", "Designing", "Developing", "Reviewing",
@@ -41,9 +41,15 @@ class Summary(tk.Frame):
 
         hdr = tk.Frame(self, bg=bg)
         hdr.pack(fill="x", padx=24, pady=(22, 2))
-        tk.Label(hdr, text="Summary",
+
+        PillButton(hdr, self.app, "↺ Refresh", command=self.load,
+                   small=True, outer_bg=bg, min_width=80).pack(side="right", anchor="center")
+
+        title_frame = tk.Frame(hdr, bg=bg)
+        title_frame.pack(side="left", fill="y")
+        tk.Label(title_frame, text="Summary",
                  font=("Segoe UI", 20, "bold"), bg=bg, fg=c["fg"]).pack(anchor="w")
-        tk.Label(hdr, text="Project overview and hours by period",
+        tk.Label(title_frame, text="Project overview and hours by period",
                  font=("Segoe UI", 10), bg=bg, fg=c["muted"]).pack(anchor="w", pady=(2, 0))
 
         self.group_var = tk.StringVar(value="Month")

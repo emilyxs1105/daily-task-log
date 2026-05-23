@@ -39,7 +39,10 @@ class LogViewer(tk.Frame):
         # View Switcher in Header
         toggle_frame = tk.Frame(hdr, bg=bg)
         toggle_frame.pack(side="right", anchor="se", pady=(0, 2))
-        
+
+        PillButton(toggle_frame, self.app, "↺ Refresh", command=self.load,
+                   small=True, outer_bg=bg, min_width=80).pack(side="left", padx=(0, 10))
+
         self.view_mode = tk.StringVar(value="list")
         
         self.btn_list_view = PillButton(toggle_frame, self.app, "List View", 

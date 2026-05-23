@@ -1,7 +1,9 @@
 @echo off
 echo Building Daily Task Log .exe...
-pip install pyinstaller >nul 2>&1
-pyinstaller ^
+echo NOTE: If the app is running, quit it from the tray icon first (right-click ^> Quit).
+echo.
+venv\Scripts\pip install --upgrade pyinstaller >nul 2>&1
+venv\Scripts\pyinstaller ^
   --noconfirm ^
   --onefile ^
   --windowed ^
